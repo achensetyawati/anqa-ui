@@ -4,9 +4,9 @@ import { RestService } from '../../utils/rest-service';
 import { Container } from 'aurelia-dependency-injection';
 import { Config } from "aurelia-api"
 
-//const serviceUri = 'docs/efr-kb-rtp';
+//const serviceUri = 'docs/anq-kb-rtp';
 const serviceUri = 'stores/evr-kb-rtp';
-const serviceSearch = 'docs/efr-pk-pbj/submitted';
+const serviceSearch = 'docs/anq-pk-pbj/submitted';
 
 export class Service extends RestService {
 

@@ -4,9 +4,9 @@ import { RestService } from '../../utils/rest-service';
 import { Container } from 'aurelia-dependency-injection';
 import { Config } from "aurelia-api";
 
-//const serviceUri = 'docs/efr-kb-rtt';
-const serviceUri = 'stores/efr-kb-rtt'
-// const serviceSearch = 'docs/efr-pk-pbj/submitted';
+//const serviceUri = 'docs/anq-kb-rtt';
+const serviceUri = 'stores/anq-kb-rtt'
+// const serviceSearch = 'docs/anq-pk-pbj/submitted';
 
 export class Service extends RestService {
 
@@ -31,7 +31,7 @@ export class Service extends RestService {
 
   getModuleConfig() {
     var config = Container.instance.get(Config);
-    var endpoint = config.getEndpoint("master").client.baseUrl + 'modules?keyword=EFR-KB/RTT';
+    var endpoint = config.getEndpoint("master").client.baseUrl + 'modules?keyword=anq-KB/RTT';
     return super.get(endpoint);
   }
 
@@ -49,7 +49,7 @@ export class Service extends RestService {
 
   getPackingListTransferStock(coreRef) {
     var config = Container.instance.get(Config);
-    var endpoint = config.getEndpoint("merchandiser").client.baseUrl + 'docs/efr-pk-pbj/packingRTT?keyword=' + coreRef;
+    var endpoint = config.getEndpoint("merchandiser").client.baseUrl + 'docs/anq-pk-pbj/packingRTT?keyword=' + coreRef;
     return super.get(endpoint);
   }
 
