@@ -261,12 +261,13 @@ export class DataForm {
           };
 
         var temp = await this.service.getByCode(args);
-        
+        console.log(temp);
         if(temp != undefined) {
           if(Object.getOwnPropertyNames(temp).length > 0) {
             var temp1 = temp[0];
             temp1.sendquantity = 1;
             var data = this.data.items.find((x) => x.item.code === temp1.item.code);
+           
             if(!data) {
               this.data.items.push(temp1);
               

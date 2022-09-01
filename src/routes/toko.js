@@ -9,9 +9,9 @@ module.exports = [
         settings: { roles: ["*"] }
     },
     {
-        route: 'efr-tb-bbt',
-        name: 'efr-tb-bbt',
-        moduleId: './modules/efr-tb-bbt-cr/index',
+        route: 'anq-tb-bbt',
+        name: 'anq-tb-bbt',
+        moduleId: './modules/anq-tb-bbt-cr/index',
         nav: true,
         title: 'Pemasukan Barang',
         auth: true,
@@ -22,9 +22,9 @@ module.exports = [
         }
     },
     // {
-    //     route: 'efr-tb-bat',
-    //     name: 'efr-tb-bat',
-    //     moduleId: './modules/efr-tb-bat-cr/index',
+    //     route: 'anq-tb-bat',
+    //     name: 'anq-tb-bat',
+    //     moduleId: './modules/anq-tb-bat-cr/index',
     //     nav: true,
     //     title: 'Pemasukan Embalase',
     //     auth: true,
@@ -35,9 +35,9 @@ module.exports = [
     //     }
     // },
     {
-        route: 'efr-kb-rtp',
-        name: 'efr-kb-rtp',
-        moduleId: './modules/efr-kb-rtp-cr/index',
+        route: 'anq-kb-rtp',
+        name: 'anq-kb-rtp',
+        moduleId: './modules/anq-kb-rtp-cr/index',
         nav: true,
         title: 'Retur Barang Ke Pusat',
         auth: true,
@@ -48,9 +48,9 @@ module.exports = [
         }
     },
     {
-        route: 'efr-kb-rtt',
-        name: 'efr-kb-rtt',
-        moduleId: './modules/efr-kb-rtt-cr/index',
+        route: 'anq-kb-rtt',
+        name: 'anq-kb-rtt',
+        moduleId: './modules/anq-kb-rtt-cr/index',
         nav: true,
         title: 'Transfer Stok',
         auth: true,
