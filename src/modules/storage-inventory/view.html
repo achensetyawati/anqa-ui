@@ -1,94 +1,50 @@
-import { inject, Lazy, bindable } from 'aurelia-framework';
-import { Router } from 'aurelia-router';
-import { Service } from './service';
-import moment from 'moment';
-
-@inject(Router, Service)
-export class View {
-    
-    // itemYears = [];
-    data = [];
-    info = { page: 1, keyword: '' };
-    params = {};
-    keyword = '';
-    
-
-    controlOptions = {
-        control: {
-            length: 4,
-        },
-    };
-
-    constructor(router, service) {
-        this.router = router;
-        this.service = service;  
-    }
-
-    columns = [
-        {title: 'No', field: 'Index'}, 
-        {title: 'Tanggal', field: 'Date',
-        }, 
-        {title: 'Referensi', field: 'Reference'},
-        {title: 'Tipe', field: 'Type'},
-        {title: 'Sebelum', field: 'Before'},
-        {title: 'Kuantitas', field: 'Quantity'},
-        {title: 'Setelah', field: 'After'},
-        {title: 'Deskripsi', field: 'Remark'}
-    ]
-
-    async activate(params) {        
-        this.params = params;
-        this.info.keyword = '';
-
-        this.storageId = params.storageId;
-        this.itemCode = params.itemCode; 
+<template>
+    <h3>Detil Aliran Stok</h3> 
+    <form class="form-horizontal"> 
+        <div class="form-group">
+            <label for="code" class="col-sm-2 control-label">Gudang</label>
+            <div class="col-sm-10">
+                <p class="form-control-static">${data[0].StorageName}</p>
+                <!-- <p class="form-control-static">${storageName}</p> -->
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="code" class="col-sm-2 control-label">Item</label>
+            <div class="col-sm-10">
+                <p class="form-control-static">${data[0].ItemName}</p>
+                <!-- <p class="form-control-static">${itemName}</p> -->
+            </div>
+        </div> 
+        <!-- <div class="form-group">
+            <label for="code" class="col-sm-2 control-label">Bulan</label>
+            <au-dropdown value.bind="month" options.bind="controlOptions" items.bind="itemMonths" key="value" text="text"></au-dropdown>        
+        </div>
         
+        <div class="form-group">
+            <label for="code" class="col-sm-2 control-label">Tahun</label>
+            <au-dropdown value.bind="year" options.bind="controlOptions" items.bind="itemYears" key="value" text="text"></au-dropdown>
+        </div> -->
+
+        <!-- <div class="form-group">
+            <div class="col-sm-12">
+                <button class="btn btn-success pull-right" click.delegate="loadPage()">Tampilkan</button>
+            </div>
+        </div> -->
         
-        this.reloadItem();
-    }
-
+    </form> 
+    <au-table 
+        view-model.ref="models" 
+        data.bind="tableData" 
+        page-size="25" 
+        columns.bind="columns" 
+        options.bind="options">
+    </au-table>
     
-    reloadItem() { 
-        this.tableData=[];
-        this.total=0;
-        this.totalharga=0;
-        this.storageId= this.storage ? this.storage._id : "";
-        this.filter = this.filter;
-        var index=1;
-        this.service.getAllMovement(this.storageId, this.itemCode, this.info)
-            .then(data => {
-
-                this.models.refresh();
-                this.data = data;
-                for (var item of this.data)
-                {
-                    item.Index=index++;
-                    item.Date = moment(item.Date, "YYYY-MM-DDTHH:mm:SSSZ").format("DD MMM YYYY - HH:mm:SS")
-                    this.tableData.push(item);
-                    
-                }
-            })
-    }
-
-    moveexcel(params) {
-        var params = this.params;
-
-        var storageId = params.storageId;
-        var itemCode = params.itemCode; 
-
-        this.service.movementExcel(storageId, itemCode);
-
-
-    }
-    options = {
-        search: false,
-        showToggle: false,
-        showColumns: false,
-        undefinedText: '0'
-    };
     
-    list() {
-        this.router.navigateToRoute('list');
-    }
-}
- 
+    <div class="btn-group pull-right">
+        <button click.delegate="list()" class="btn btn-success btn-sm pull-right">Kembali</button>
+        &nbsp;
+        <button style="margin-right:10px; "click.delegate="moveexcel()" class="btn btn-success btn-sm pull-right">Cetak Excel</button>
+    </div>
+    
+</template>
