@@ -5,7 +5,7 @@ import { Container } from 'aurelia-dependency-injection';
 import { Config } from "aurelia-api"
 
 //const serviceUri = 'docs/anq-kb-rtp';
-const serviceUri = 'stores/evr-kb-rtp';
+const serviceUri = 'stores/anq-kb-rtp';
 const serviceSearch = 'docs/anq-pk-pbj/submitted';
 
 export class Service extends RestService {
@@ -36,7 +36,7 @@ export class Service extends RestService {
 
   getSPKByPackingList(packingList) {
     var config = Container.instance.get(Config);
-    var endpoint = config.getEndpoint("merchandiser").client.baseUrl + 'docs/evr-pk/received?keyword=' + packingList;
+    var endpoint = config.getEndpoint("merchandiser").client.baseUrl + 'docs/anq-pk/received?keyword=' + packingList;
     return super.get(endpoint);
   }
 
@@ -48,7 +48,7 @@ export class Service extends RestService {
 
   getModuleConfig() {
     var config = Container.instance.get(Config);
-    var endpoint = config.getEndpoint("master").client.baseUrl + 'modules?keyword=EVR-KB/RTP';
+    var endpoint = config.getEndpoint("master").client.baseUrl + 'modules?keyword=ANQ-KB/RTP';
     return super.get(endpoint);
   }
 
