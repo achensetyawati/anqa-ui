@@ -12,7 +12,7 @@ export class Pending {
       keyword: '',
       filter: JSON.stringify ({
         "IsReceived": false,
-        'PackingList.Contains("EVR-FN") || Reference.Contains("EVR-KB/RTP")': "true",
+        'PackingList.Contains("ANQ-FN") || Reference.Contains("ANQ-KB/RTP")': "true",
       })
     };
     keyword = '';
